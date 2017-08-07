@@ -1,0 +1,5 @@
+#!/bin/bash
+docker build -t damnvulnerable/sambacry:amd64 .
+docker build --build-args ARCH=arm -t damnvulnerable/sambacry:arm .
+docker push damnvulnerable/sambacry
+manifest-tool push from-args --platforms linux/amd64,linux/arm --template "damnvulnerable/sambacry:ARCH" --target damnvulnerable/sambacry:latest
